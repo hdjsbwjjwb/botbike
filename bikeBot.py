@@ -6,8 +6,11 @@ from datetime import datetime
 import pytz
 import re
 
+import gspread
+from google.oauth2 import service_account
+
 TOKEN = '7653332960:AAGWP4vmKyaoQ-8dYyR9XIm7j0G-9aoHwnE'
-ADMIN_ID = 6425885445  # <-- сюда вставь свой user_id
+ADMIN_ID = 6425885445
 
 SUPPORT_TEXT = (
     "💬 <b>Поддержка</b>\n\n"
@@ -17,7 +20,7 @@ SUPPORT_TEXT = (
     "E-mail: velo.prokat@internet.ru"
 )
 
-PHONE_NUMBER = "+7 906 211-29-40"  # <-- сюда свой номер для оплаты
+PHONE_NUMBER = "+7 906 211-29-40"
 
 bike_categories = {
     'Детский':     {"hour": 150, "emoji": "🧒"},
@@ -27,10 +30,35 @@ bike_categories = {
 }
 
 QUANTITY_CHOICES = [1, 2, 3, 4, 5]
-
 user_rent_data = {}
 
 KALININGRAD_TZ = pytz.timezone('Europe/Kaliningrad')
+
+# ---- Google Sheets ----
+SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
+SERVICE_ACCOUNT_FILE = "balticbikebot-8f325aae06ee.json"
+SPREADSHEET_ID = '1OeqJkQRkyqlkgPuorni6CQzwjY4RP9rB1sRCdtCL07g'
+SHEET_NAME = 'Лист1'
+
+creds = service_account.Credentials.from_service_account_file(
+    SERVICE_ACCOUNT_FILE, scopes=SCOPES
+)
+gc = gspread.authorize(creds)
+worksheet = gc.open_by_key(SPREADSHEET_ID).worksheet(SHEET_NAME)
+
+def write_rent_to_sheet(event_type, user_fullname, user_id, phone, start_time, end_time, duration_str, cart, total_price):
+    cart_str = "; ".join([f"{bike_categories[cat]['emoji']} {cat}: {qty} шт." for cat, qty in cart.items()])
+    worksheet.append_row([
+        event_type,            # "Начало аренды" или "Завершена аренда"
+        user_fullname,
+        str(user_id),
+        phone or "",
+        start_time.strftime("%d.%m.%Y %H:%M") if start_time else "",
+        end_time.strftime("%d.%m.%Y %H:%M") if end_time else "",
+        duration_str or "",
+        cart_str,
+        str(total_price)
+    ])
 
 bot = Bot(
     token=TOKEN,
@@ -264,6 +292,19 @@ async def start_rent(message: types.Message):
     for cat, qty in data["cart"].items():
         total_hour_price += bike_categories[cat]["hour"] * qty
 
+    # Google Sheets запись - НАЧАЛО аренды
+    write_rent_to_sheet(
+        "Начало аренды",
+        message.from_user.full_name,
+        message.from_user.id,
+        data.get('phone'),
+        data["start_time"],
+        None,
+        "",
+        data["cart"],
+        total_hour_price
+    )
+
     try:
         await bot.send_message(
             ADMIN_ID,
@@ -341,6 +382,19 @@ async def finish_rent(message: types.Message):
         "Нажмите на номер, чтобы скопировать его.\n"
         "После оплаты покажите чек сотруднику или отправьте его в чат.",
         reply_markup=keyboard
+    )
+
+    # Google Sheets запись - ОКОНЧАНИЕ аренды
+    write_rent_to_sheet(
+        "Завершена аренда",
+        message.from_user.full_name,
+        message.from_user.id,
+        data.get('phone'),
+        start_time,
+        end_time,
+        f"{period_str} ({ride_time})",
+        data["cart"],
+        total_price
     )
 
     try:
