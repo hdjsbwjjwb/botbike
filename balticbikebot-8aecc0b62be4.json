@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "balticbikebot",
+  "private_key_id": "8aecc0b62be49ce2a84655cbcf089d7346f03e88",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDNdTyJqbz1IPex\nlIRM4xB36SdZa37+forhfC3c06SHTBUhQ6Q3wknkt8tsfKOGTVpus3VGSLH1ouK4\nOhMBbLExKHqhvFR4cG+gjsASy8/DxcW9dwhmx9xXhRMriX9Lx5DuLwxMkQWmOZ5c\n6dntHY78kyk1gQLmdz+oYbZpacjP32OtsHNKRn3G/t68YVVVFLOZyWviaL0WkQvz\n7nHmmLSEBtAyEEMTGPMGLuD/zb0uDUwP3iw3bXgI4nFzhm3MUHnyqClmzsWp/+0G\nfVvBpRhQ39RIKrXreYqG8dm3AqJfk8yKlXj1foywepa7pgQOIPMToeGQHJWnNsGh\nvAoKQs11AgMBAAECggEAIsUraJS8MLPSl0/uD+EBgXmIuj5R8JnTwRM148BBgNAk\nZ0u+N91+ieF84LA7MFhY7JEcULeuvkZBnjHd04jkd9BE6Kgpl3RXv9FIuiWZ1KTc\nsRK67kH2jS0tMFoFm/p7EYQOzcphLV9k6I5+3fz5nM7+01ow9nXJ5SIcL7zCSkNT\nQacfdkAUZDRW6etdp7cGFPLtzyh7Y2zn7UNh7ZW8C25tbQgBOEXqVXDcmtION1wS\nc3uIf/WHMvKCraGxnDNgYMKDluosaw6OSsx7Wmspijxr5yX9i/+T3FGzSLxVMIeR\nnFnmlrn9PDLnSCOxv27+PmM1Js+4K4zaqm+V14/zxQKBgQDrRop8g81qA5zNT1VP\nQJM14C6nPclH7DkmwtZtqTqoS5AdchER4hehd/rjeFoYPoVMXVd+55h8cxe9N+hb\n2GhlkL61Kdwwg6tb0EQWM5lntlEy7DIBOWJdnAjAijjuM5KPtRPLB9DUKEqLWcio\nk0nP3aFf95aICoMZCMrOuAFs2wKBgQDfjk8vdJzLAL2bkH5/APCcijHAasXyCjrT\nwtkdQth1fiL74rOvlLE19uuskMjcgcs3ooH3/jy7UIHMHoadC8X/X/m94dOBwXas\njjd3wpFhZqWpp9IY2QbQUN91lZaIgRzo0XSX6sHHn4UosfWA5Hf0q1bdpT6jedMd\nMytAvfuX7wKBgDD8LedA1erlt6bzhpKKolvMQkplzdugrkGIvXZ1jpXtraLD1hQA\nG+VtgpoLu85ibgR5RrdQZuo6WE34LvO4efvziBFWFtcvAuWJ1jM9KQpz5jIRBVRF\n61oMG7Ji1PmbWT98dxOFnBAgF20uE14t1GdoAKpndTr73VHAB+HEY9+TAoGADSdC\nYXhrAUa54T1PNAnKHmvDIZ8mpmcTrwH35FDai48wX8Gm8N2+z34Hv8+FAfRhEJTv\nMLg0upCyEmB5ayQWMkBjYVi4KRpI8T4s5U79Xs27UZAePHgIfplDjJeQk9eE6+3m\n/klBvY0VOJ+/4iWPKUYrhj8CwHuagE1Sbiy/cOECgYBizXEvufET2juzC1yfB+9X\n+Zi3RDymBmCxp4V1VhQrQ0iyTmGU+gv/MNKKRM57Wo+knI5He8jMqzceg7XNYHcX\n+bdV7UGrfTrNBTFLFrWKZ3PdF/FFHXtblCC/+8Vys5p/KkJTSX6KkFG8aWN/cjFu\nkkn8C2LKBmZQySN1oLP/jA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "paniihida@balticbikebot.iam.gserviceaccount.com",
+  "client_id": "100822877932524781454",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/paniihida%40balticbikebot.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
