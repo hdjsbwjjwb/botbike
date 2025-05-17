@@ -2,3 +2,5 @@ aiogram
 pytz
 gspread
 oauth2client
+gspread
+google-auth
